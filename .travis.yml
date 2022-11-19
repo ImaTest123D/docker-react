@@ -6,6 +6,6 @@ before_install:
   - docker build -t imatest123d/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run ImaTest123D/docker-react npm run test -- --coverage
+  - docker run imatest123d/docker-react npm run test -- --coverage
 
 ####
