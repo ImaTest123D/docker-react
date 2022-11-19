@@ -3,7 +3,19 @@ services:
   - docker
 
 before_install:
-  - docker build -t ImaTest123D/docker-react - f Dockerfile.dev .
+  - docker build -t imatest123d/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run ImaTest123D/docker-react npm run test -- --coverage
+  - docker run imatest123d/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "Frontent"
+  env: "Frontent-env"
+  bucket_name: "elasticbeanstalk-us-east-1-221980554290"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "AWS_SECRET_KEY"
