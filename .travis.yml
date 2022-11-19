@@ -8,4 +8,16 @@ before_install:
 script:
   - docker run imatest123d/docker-react npm run test -- --coverage
 
-####
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "Frontent"
+  env: "Frontent-env"
+  bucket_name: "elasticbeanstalk-us-east-1-221980554290"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "AWS_SECRET_KEY"
+
+  http://frontent-env.eba-7jy4ce2g.us-east-1.elasticbeanstalk.com
